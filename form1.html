@@ -1,0 +1,35 @@
+<form onsubmit="myFunction()">
+  <label for="fname">User name:</label><br>
+  <input type="text" id="fname" name="Username" value=""><br>
+  <label for="pwd">Password:</label><br>
+  <input type="text" id="pwd" name="Password" value=""><br><br>
+  <input type="submit" value="Submit">
+  <input type="reset">
+</form>
+
+<script>
+
+function myFunction(){
+    var nameValue = document.getElementById("fname").value 
+    var pwdValue = document.getElementById("pwd").value)
+   
+	var axios = require('axios');
+	var data = '{"Username": nameValue,"Password": pwdValue}';
+
+	var config = {
+		method: 'post',
+		url: 'https://ayagskdq4i.execute-api.us-east-1.amazonaws.com/dev/training',
+		data : data
+			};
+
+	axios(config)
+	.then(function (response) {
+		console.log(JSON.stringify(response.data));
+		})
+	.catch(function (error) {
+		console.log(error);
+		});
+    }
+</script>
+</body>
+</html>
